@@ -66,10 +66,10 @@ type StepCardProps = {
 
 function StepCard({ number, title, formula, result, explanation, blockedMessage }: StepCardProps) {
   return (
-    <Card className="border-slate-200/80 bg-white/95">
+    <Card className="border-slate-200/80 bg-white/95 shadow-sm">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-3 text-base">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500/90 to-blue-600/90 text-white font-semibold shadow-sm">
             {number}
           </span>
           {title}
@@ -340,9 +340,19 @@ export default function App() {
   };
 
   return (
-    <main className="mx-auto min-h-screen max-w-[1440px] px-3 py-5 sm:px-4 md:px-6 lg:px-8 lg:py-8">
-      <div className="mb-6 space-y-2">
-        <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Industrial Water Softener Sizer (Industrial Ion Exchange)</h1>
+    <main className="relative mx-auto min-h-screen max-w-[1440px] px-3 py-5 sm:px-4 md:px-6 lg:px-8 lg:py-8">
+      <div className="mb-6 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-md">
+            <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Industrial Water Softener Sizer</h1>
+            <p className="text-xs font-medium uppercase tracking-wider text-cyan-700/80 md:text-sm">Industrial Ion Exchange Calculations</p>
+          </div>
+        </div>
         <p className="max-w-4xl text-sm text-muted-foreground md:text-base">
           Enter operating assumptions on the left, then review each step of the softener sizing math on the right. Values update live as you type.
         </p>
@@ -350,9 +360,14 @@ export default function App() {
 
       <div className="grid gap-6 lg:grid-cols-[minmax(320px,390px)_minmax(0,1fr)]">
         <section className="space-y-4 md:space-y-5">
-          <Card className="border-slate-200/80 bg-white/95">
-            <CardHeader>
-              <CardTitle>Section 1 - Water Quality</CardTitle>
+          <Card className="border-slate-200/80 bg-white/95 shadow-sm">
+            <CardHeader className="border-b border-slate-100">
+              <CardTitle className="flex items-center gap-2">
+                <svg className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Section 1 - Water Quality
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -422,9 +437,14 @@ export default function App() {
             </CardContent>
           </Card>
 
-          <Card className="border-slate-200/80 bg-white/95">
-            <CardHeader>
-              <CardTitle>Section 2 - Demand / Operating Targets</CardTitle>
+          <Card className="border-slate-200/80 bg-white/95 shadow-sm">
+            <CardHeader className="border-b border-slate-100">
+              <CardTitle className="flex items-center gap-2">
+                <svg className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                Section 2 - Demand / Operating Targets
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -472,9 +492,14 @@ export default function App() {
             </CardContent>
           </Card>
 
-          <Card className="border-slate-200/80 bg-white/95">
-            <CardHeader>
-              <CardTitle>Section 3 - Regeneration / Capacity Assumptions</CardTitle>
+          <Card className="border-slate-200/80 bg-white/95 shadow-sm">
+            <CardHeader className="border-b border-slate-100">
+              <CardTitle className="flex items-center gap-2">
+                <svg className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Section 3 - Regeneration / Capacity Assumptions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -534,9 +559,14 @@ export default function App() {
             </CardContent>
           </Card>
 
-          <Card className="border-slate-200/80 bg-white/95">
-            <CardHeader>
-              <CardTitle>Section 4 - Flow / Vessel Sizing Assumptions</CardTitle>
+          <Card className="border-slate-200/80 bg-white/95 shadow-sm">
+            <CardHeader className="border-b border-slate-100">
+              <CardTitle className="flex items-center gap-2">
+                <svg className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Section 4 - Flow / Vessel Sizing Assumptions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -591,10 +621,15 @@ export default function App() {
         </section>
 
         <section className="space-y-4">
-          <Card className="border-slate-200/80 bg-white/95">
-            <CardHeader className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <Card className="border-slate-200/80 bg-white/95 shadow-sm">
+            <CardHeader className="flex flex-col gap-3 border-b border-slate-100 md:flex-row md:items-center md:justify-between">
               <div>
-                <CardTitle>Summary</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <svg className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  Summary
+                </CardTitle>
                 <CardDescription>Key design outputs based on the current assumptions.</CardDescription>
               </div>
               <Button onClick={copySummary} variant="outline" className="w-full md:w-auto">
