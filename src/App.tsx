@@ -354,7 +354,7 @@ export default function App() {
           </div>
         </div>
         <p className="max-w-4xl text-sm text-muted-foreground md:text-base">
-          Enter operating assumptions on the left, then review each step of the softener sizing math on the right. Values update live as you type.
+          Enter operating assumptions, then review each step of the softener sizing math. Values update live as you type.
         </p>
       </div>
 
