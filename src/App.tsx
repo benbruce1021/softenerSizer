@@ -87,7 +87,7 @@ function StepCard({ number, title, formula, result, explanation, blockedMessage 
               {blockedMessage}
             </p>
           ) : (
-            <p className="mt-1 text-lg font-semibold text-foreground">{result}</p>
+            <p className={`mt-1 text-lg font-semibold ${result === '—' ? 'text-muted-foreground/50' : 'text-foreground'}`}>{result}</p>
           )}
         </div>
         <p className="leading-relaxed text-muted-foreground">{explanation}</p>
@@ -117,7 +117,7 @@ function formatNumber(value: number, decimals = 2): string {
 
 function formatResult(value: number | null, unit: string, decimals = 2): string {
   if (value === null) {
-    return "Enter inputs to calculate";
+    return "—";
   }
 
   return `${formatNumber(value, decimals)} ${unit}`;
@@ -603,9 +603,19 @@ export default function App() {
             </CardHeader>
             <CardContent className="space-y-3">
               {calculated.requiredInputMissing && (
-                <p className="rounded-md border border-amber-300 bg-amber-100 px-3 py-2 text-sm text-amber-900">
-                  Enter inputs to calculate
-                </p>
+                <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-slate-50 to-white px-4 py-3 shadow-sm">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100">
+                      <svg className="h-4 w-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-slate-900">Ready to Calculate</p>
+                      <p className="mt-0.5 text-xs text-slate-600">Complete the required fields on the left to generate sizing results</p>
+                    </div>
+                  </div>
+                </div>
               )}
               {calculated.reserveTooHigh && (
                 <p className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
@@ -621,29 +631,37 @@ export default function App() {
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Design hardness</p>
-                  <p className="mt-1 text-lg font-semibold">
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step2DesignHardnessGpg === null ? 'text-muted-foreground/50' : ''}`}>
                     {formatResult(calculated.step2DesignHardnessGpg, "grains per gallon", 2)}
                   </p>
                 </div>
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Resin volume</p>
-                  <p className="mt-1 text-lg font-semibold">{formatResult(calculated.step7ResinFt3, "ft³", 2)}</p>
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step7ResinFt3 === null ? 'text-muted-foreground/50' : ''}`}>
+                    {formatResult(calculated.step7ResinFt3, "ft³", 2)}
+                  </p>
                 </div>
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Salt per regeneration</p>
-                  <p className="mt-1 text-lg font-semibold">{formatResult(calculated.step8SaltLbsPerRegen, "pounds", 2)}</p>
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step8SaltLbsPerRegen === null ? 'text-muted-foreground/50' : ''}`}>
+                    {formatResult(calculated.step8SaltLbsPerRegen, "pounds", 2)}
+                  </p>
                 </div>
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Estimated brine refill water</p>
-                  <p className="mt-1 text-lg font-semibold">{formatResult(calculated.step9BrineWaterGallons, "gallons", 2)}</p>
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step9BrineWaterGallons === null ? 'text-muted-foreground/50' : ''}`}>
+                    {formatResult(calculated.step9BrineWaterGallons, "gallons", 2)}
+                  </p>
                 </div>
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Minimum tank diameter estimate</p>
-                  <p className="mt-1 text-lg font-semibold">{formatResult(calculated.step11DiameterIn, "in", 2)}</p>
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step11DiameterIn === null ? 'text-muted-foreground/50' : ''}`}>
+                    {formatResult(calculated.step11DiameterIn, "in", 2)}
+                  </p>
                 </div>
                 <div className="rounded-lg border bg-muted/40 p-3">
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Required backwash flow</p>
-                  <p className="mt-1 text-lg font-semibold">
+                  <p className={`mt-1 text-lg font-semibold ${calculated.step12BackwashFlowGpm === null ? 'text-muted-foreground/50' : ''}`}>
                     {formatResult(calculated.step12BackwashFlowGpm, "gallons per minute", 2)}
                   </p>
                 </div>
@@ -763,7 +781,7 @@ export default function App() {
             formula="Tank diameter in feet = 2 × square root of (bed area ÷ pi). Tank diameter in inches = tank diameter in feet × 12."
             result={
               calculated.step11DiameterFt === null || calculated.step11DiameterIn === null
-                ? "Enter inputs to calculate"
+                ? "—"
                 : `${formatNumber(calculated.step11DiameterFt, 2)} feet (${formatNumber(calculated.step11DiameterIn, 2)} inches)`
             }
             blockedMessage={calculated.step11Message}
