@@ -711,7 +711,7 @@ export default function App() {
 
           <StepCard
             number={1}
-            title="Step 1 - Convert Hardness to Grains per Gallon"
+            title="Convert Hardness to Grains per Gallon"
             formula={
               <>
                 <p>If hardness is entered as milligrams per liter as CaCO₃: hardness in grains per gallon = hardness value ÷ 17.1.</p>
@@ -724,7 +724,7 @@ export default function App() {
 
           <StepCard
             number={2}
-            title="Step 2 - Determine Design Hardness (Compensated or Not)"
+            title="Determine Design Hardness (Compensated or Not)"
             formula={
               <>
                 <p>When compensation is off: design hardness = hardness in grains per gallon.</p>
@@ -737,7 +737,7 @@ export default function App() {
 
           <StepCard
             number={3}
-            title="Step 3 - Daily Hardness Load (grains per day)"
+            title="Daily Hardness Load (grains per day)"
             formula="Daily hardness load = design hardness × gallons per day."
             result={formatResult(calculated.step3GrainsPerDay, "grains per day", 0)}
             explanation="This value is the total ion-exchange workload the softener must handle every day. It links water chemistry and water volume into one operating demand number."
@@ -745,7 +745,7 @@ export default function App() {
 
           <StepCard
             number={4}
-            title="Step 4 - Required Capacity Per Run (before reserve)"
+            title="Required Capacity Per Run (before reserve)"
             formula="Required capacity per run = daily hardness load × target days between regenerations."
             result={formatResult(calculated.step4RequiredGrainsPerRun, "grains", 0)}
             explanation="This is the theoretical capacity needed for the selected regeneration interval with no safety margin. It establishes the baseline run length requirement before adding reserve."
@@ -753,7 +753,7 @@ export default function App() {
 
           <StepCard
             number={5}
-            title="Step 5 - Add Reserve (design grains per run)"
+            title="Add Reserve (design grains per run)"
             formula="Reserve fraction = reserve capacity percent ÷ 100. Design grains per run = required grains per run ÷ (1 − reserve fraction)."
             result={formatResult(calculated.step5DesignGrainsPerRun, "grains", 0)}
             blockedMessage={calculated.step5Message}
@@ -762,7 +762,7 @@ export default function App() {
 
           <StepCard
             number={6}
-            title="Step 6 - Determine Working Capacity per Cubic Foot of Resin"
+            title="Determine Working Capacity per Cubic Foot of Resin"
             formula={
               <>
                 <p>When override is off: use the built-in capacity table for the selected salt dose.</p>
@@ -776,7 +776,7 @@ export default function App() {
 
           <StepCard
             number={7}
-            title="Step 7 - Required Resin Volume (cubic feet)"
+            title="Required Resin Volume (cubic feet)"
             formula="Required resin volume = design grains per run ÷ working capacity per cubic foot."
             result={formatResult(calculated.step7ResinFt3, "ft³", 2)}
             blockedMessage={calculated.step7Message}
@@ -785,7 +785,7 @@ export default function App() {
 
           <StepCard
             number={8}
-            title="Step 8 - Salt Required Per Regeneration (pounds)"
+            title="Salt Required Per Regeneration (pounds)"
             formula="Salt required per regeneration = resin volume × salt dose."
             result={formatResult(calculated.step8SaltLbsPerRegen, "pounds", 2)}
             blockedMessage={calculated.step8Message}
@@ -794,7 +794,7 @@ export default function App() {
 
           <StepCard
             number={9}
-            title="Step 9 - Estimated Brine Refill Water (gallons)"
+            title="Estimated Brine Refill Water (gallons)"
             formula="Estimated brine refill water = salt required per regeneration ÷ salt dissolution factor."
             result={formatResult(calculated.step9BrineWaterGallons, "gallons", 2)}
             blockedMessage={calculated.step9Message}
@@ -803,7 +803,7 @@ export default function App() {
 
           <StepCard
             number={10}
-            title="Step 10 - Required Bed Area (square feet) from Peak Flow"
+            title="Required Bed Area (square feet) from Peak Flow"
             formula="Required bed area = peak flow rate ÷ service loading rate."
             result={formatResult(calculated.step10BedAreaFt2, "ft²", 2)}
             blockedMessage={calculated.step10Message}
@@ -812,7 +812,7 @@ export default function App() {
 
           <StepCard
             number={11}
-            title="Step 11 - Minimum Tank Diameter Estimate (inches)"
+            title="Minimum Tank Diameter Estimate (inches)"
             formula="Tank diameter in feet = 2 × square root of (bed area ÷ pi). Tank diameter in inches = tank diameter in feet × 12."
             result={
               calculated.step11DiameterFt === null || calculated.step11DiameterIn === null
@@ -825,7 +825,7 @@ export default function App() {
 
           <StepCard
             number={12}
-            title="Step 12 - Backwash Flow Requirement (gallons per minute)"
+            title="Backwash Flow Requirement (gallons per minute)"
             formula="Backwash flow requirement = bed area × backwash rate."
             result={formatResult(calculated.step12BackwashFlowGpm, "gallons per minute", 2)}
             blockedMessage={calculated.step12Message}
