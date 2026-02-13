@@ -647,7 +647,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-slate-900">Ready to Calculate</p>
-                      <p className="mt-0.5 text-xs text-slate-600">Complete the required fields on the left to generate sizing results</p>
+                      <p className="mt-0.5 text-xs text-slate-600">Complete the required fields to generate sizing results</p>
                     </div>
                   </div>
                 </div>
