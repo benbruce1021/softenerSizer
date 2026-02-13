@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 40% 97%;
+    --foreground: 199 44% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 199 44% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 199 44% 17%;
+    --primary: 194 72% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 37 95% 89%;
+    --secondary-foreground: 30 45% 20%;
+    --muted: 180 24% 93%;
+    --muted-foreground: 199 30% 35%;
+    --accent: 25 95% 88%;
+    --accent-foreground: 23 58% 24%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 192 26% 82%;
+    --input: 190 26% 85%;
+    --ring: 194 72% 34%;
+    --radius: 0.8rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(230, 247, 247, 0.8) 0, transparent 35%),
+      radial-gradient(circle at 90% 10%, rgba(255, 239, 214, 0.8) 0, transparent 30%);
+    font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    input,
+    select,
+    button {
+      font-size: 16px;
+    }
+  }
+}
