@@ -612,9 +612,6 @@ export default function App() {
                 <Button onClick={resetToDefaults} variant="secondary" className="w-full sm:w-auto">
                   Reset to defaults
                 </Button>
-                <Button onClick={() => setCopyStatus("idle")} variant="outline" className="w-full sm:w-auto">
-                  Calculate
-                </Button>
               </div>
             </CardContent>
           </Card>
